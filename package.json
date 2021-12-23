@@ -19,8 +19,9 @@
     "scripts": {
         "dev": "npm run build -- --watch",
         "build": "tsup",
-        "docs": "vuepress dev docs",
-        "docs:build": "NODE_ENV=production vuepress build docs"
+        "cpHome": "cp ./README.md ./docs/README.md",
+        "docs": "npm run cpHome && vuepress dev docs",
+        "docs:build": "npm run cpHome && NODE_ENV=production vuepress build docs"
     },
     "dependencies": {
         "react": "^17.0.2"
