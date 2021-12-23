@@ -7,6 +7,10 @@
     "types": "./dist/index.d.ts",
     "author": "vfasky<vfasky@me.com>",
     "license": "MIT",
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org"
+    },
     "files": [
         "dist",
         "package.json",
