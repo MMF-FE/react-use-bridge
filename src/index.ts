@@ -94,7 +94,19 @@ export default function useBridge(
                 }
             } else if (method) {
                 if (brdgingSupplier[method]) {
-                    return brdgingSupplier[method](data)
+                    const callbackId = data.callbackId
+                    if (!callbackId) {
+                        return brdgingSupplier[method](data)
+                    }
+                    const result = brdgingSupplier[method](data)
+                    if (
+                        result instanceof Promise ||
+                        (result && typeof result.then === 'function')
+                    ) {
+                        result.then((data: any) => {
+                            asyncSetData(callbackId, data)
+                        })
+                    }
                 } else {
                     console.log('on msg:', method, data)
                 }

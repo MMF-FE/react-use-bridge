@@ -70,12 +70,13 @@ const Page: React.FC<{}> = (props) => {
             const { name } = data
             alert(name)
         }, [])
-        getUrl: useCallback((data: MsgData<{ callbackId?: string }>) => {
-            const { callbackId } = data
+        getUrl: useCallback(async () => {
+            // const { callbackId } = data
 
-            if (callbackId) {
-                bridge.asyncSetData(callbackId, location.href)
-            }
+            // if (callbackId) {
+            //     bridge.asyncSetData(callbackId, location.href)
+            // }
+            return location.href
         }, [])
     }, iframeRef.current)
 
